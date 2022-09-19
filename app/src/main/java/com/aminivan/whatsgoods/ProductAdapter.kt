@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.aminivan.whatsgoods.databinding.ItemProductBinding
 
@@ -34,9 +35,8 @@ class ProductAdapter(var listProduct: ArrayList<DataProduct>): RecyclerView.Adap
                 bundle.putInt("stockProduct",listProduct[position].stock)
                 bundle.putString("descProduct",listProduct[position].descProduct)
                 bundle.putInt("priceProduct",listProduct[position].priceProduct)
-                var intent = Intent(context,DetailActivity::class.java)
-                intent.putExtras(bundle)
-                context.startActivity(intent)
+                Navigation.findNavController(holder.itemView).navigate(R.id.action_fragmentMain_to_fragmentDetails,bundle)
+
             }
 
         })
