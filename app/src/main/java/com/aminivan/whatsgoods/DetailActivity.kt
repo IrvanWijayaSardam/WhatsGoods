@@ -48,7 +48,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun gotoWhatsApp(productName: String,price: String){
-        val url = "https://wa.me/6281340691423/?text=Halo%20saya%20berminat%20membeli%20barang%20$productName%20dengan%20harga%20$price"
+        val url = "https://wa.me/6281340691423/?text=Halo%20saya%20berminat%20membeli%20barang%20$productName%20dengan%20harga$%20$price"
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
