@@ -45,9 +45,8 @@ class MainActivity : AppCompatActivity() {
         productVM.getProduct()
         productVM.product.observe(this, Observer {
             productAdapter.setDataProduct(it as ArrayList<DataProduct>)
-            arrayProduct.addAll(it)
         })
-
+        arrayProduct.addAll(productVM.listProduct)
         newArrayList.addAll(arrayProduct)
         tempArray.addAll(arrayProduct)
 
@@ -70,7 +69,6 @@ class MainActivity : AppCompatActivity() {
                 tempArray.clear()
                 val searchText = newText!!.toLowerCase(Locale.getDefault())
                 if(searchText.isNotEmpty()){
-                    Toast.makeText(this@MainActivity, "${newArrayList}", Toast.LENGTH_SHORT).show()
                     newArrayList.forEach{
                         if (it.nameProduct.toLowerCase(Locale.getDefault()).contains(searchText)){
                             tempArray.add(it)
@@ -78,13 +76,12 @@ class MainActivity : AppCompatActivity() {
                             productAdapter.setDataProduct(tempArray)
                         }
                     }
-                    //productAdapter.notifyDataSetChanged()
+                    productAdapter.notifyDataSetChanged()
                 }
                 else{
                     tempArray.clear()
                     tempArray.addAll(newArrayList)
                     productAdapter.notifyDataSetChanged()
-                    Toast.makeText(this@MainActivity, "Else ${searchText}", Toast.LENGTH_SHORT).show()
                 }
                 return false
             }
@@ -93,24 +90,23 @@ class MainActivity : AppCompatActivity() {
                 tempArray.clear()
                 val searchText = newText!!.toLowerCase(Locale.getDefault())
                 if(searchText.isNotEmpty()){
-                    Toast.makeText(this@MainActivity, "${newArrayList}", Toast.LENGTH_SHORT).show()
+
                     newArrayList.forEach{
                         if (it.nameProduct.toLowerCase(Locale.getDefault()).contains(searchText)){
                             tempArray.add(it)
                             productVM.setProduct(tempArray)
-                            productAdapter.setDataProduct(newArrayList)
+                            productAdapter.setDataProduct(tempArray)
                         }
                         else {
                             Log.e("ElseOnQueryTextChange : ",searchText)
                         }
                     }
-                    //productAdapter.notifyDataSetChanged()
+                    productAdapter.notifyDataSetChanged()
                 }
                 else{
                     tempArray.clear()
                     tempArray.addAll(newArrayList)
                     productAdapter.notifyDataSetChanged()
-                    Toast.makeText(this@MainActivity, "Else ${searchText}", Toast.LENGTH_SHORT).show()
 
                 }
                 return false
