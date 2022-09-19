@@ -23,4 +23,8 @@ class ViewModelProduct : ViewModel() {
     fun getProduct(){
         product.value = listProduct
     }
+    fun setProduct(newlist : ArrayList<DataProduct>){
+        product.value = newlist
+    }
+
 }
