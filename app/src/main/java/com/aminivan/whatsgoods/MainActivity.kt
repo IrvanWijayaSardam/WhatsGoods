@@ -2,9 +2,11 @@ package com.aminivan.whatsgoods
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.GridLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aminivan.whatsgoods.databinding.ActivityMainBinding
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         rvProduct = binding.rvProduct
         productAdapter = ProductAdapter(ArrayList())
 
-        rvProduct.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        rvProduct.layoutManager = GridLayoutManager(this, 2)
         rvProduct.adapter = productAdapter
     }
 }

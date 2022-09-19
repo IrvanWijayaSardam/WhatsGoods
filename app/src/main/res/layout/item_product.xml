@@ -10,11 +10,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="250dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="30dp"
+        app:cardElevation="10dp"
         >
 
         <RelativeLayout
@@ -23,30 +23,26 @@
 
             <ImageView
                 android:id="@+id/ivProduct"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 app:imageResource="@{dataProduct.imgProduct}" />
 
             <TextView
                 android:id="@+id/tvProductName"
-                android:layout_toRightOf="@+id/ivProduct"
-                android:layout_centerVertical="true"
-                android:text='@{dataProduct.nameProduct,default="Keyboard"}'
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivProduct"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:text='@{dataProduct.nameProduct,default="Keyboard"}' />
 
             <TextView
                 android:id="@+id/tvHarga"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="@{'$' + Integer.toString(dataProduct.priceProduct)}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:text="@{'$' + Integer.toString(dataProduct.priceProduct)}" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>
